@@ -17,6 +17,7 @@
                     <ion-input v-model="password" type="password" required></ion-input>
                 </ion-item>
                 <ion-button expand="block" @click="doLogin">Log In</ion-button>
+                <ion-button expand="block" @click="goToSignUpPage" color="secondary">Go To Sign Up Page</ion-button>
             </form>
         </ion-content>
     </ion-page>
@@ -61,7 +62,12 @@ export default defineComponent({
             await logInUser(email.value, password.value);
             router.replace("/tabs/tab1");
         };
-        return { email, password, doLogin, store };
+
+        const goToSignUpPage = async () => {
+            router.replace("/create-account");
+        };
+
+        return { email, password, doLogin, goToSignUpPage, store };
     },
 });
 </script>
